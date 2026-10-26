@@ -58,6 +58,8 @@
  */
 int main(void)
 {
+
+    int blinks[] = {7, 1, 9, 8};
     /* Configure board. */
     bsp_board_init(BSP_INIT_LEDS);
 
@@ -66,8 +68,16 @@ int main(void)
     {
         for (int i = 0; i < LEDS_NUMBER; i++)
         {
+           for (int j = 0; j < blinks[i]; j++){
             bsp_board_led_invert(i);
             nrf_delay_ms(500);
+            bsp_board_led_invert(i);
+            nrf_delay_ms(500);
+            
+
+           }
+           nrf_delay_ms(1000);
+
         }
     }
 }
